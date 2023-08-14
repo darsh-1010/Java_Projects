@@ -1,0 +1,176 @@
+/*A complement calculator is a tool used to find the complement of a binary number. The complement of a binary number is obtained by flipping all the bits of the number (i.e., replacing 0s with 1s and 1s with 0s).*/
+
+import java.util.Scanner;
+
+public class ComplementCalculator
+{
+    static int complement9; 
+
+    static int complement10;
+
+    static Scanner sc = new Scanner(System.in);
+        //Function to calculate 9's Complement of a integer number
+        static void complement_9()
+        {
+            System.out.print("\nEnter a number  : ");
+
+            int num = sc.nextInt();
+
+            int n = num;
+
+            int count=0;
+
+            while (num != 0)
+                 {
+                num /= 10;
+                ++count;
+                }
+
+            complement9 = ((int) Math.pow(10, count )-1)- n;
+
+            System.out.println("\n9's complement of " + n + " is: " + complement9); 
+        }
+        //Function to calculate 10's Complement of a integer number
+        static void complement_10()
+        {
+            System.out.print("\nEnter a number  : ");
+
+            int num = sc.nextInt();
+
+            int n = num;
+           
+            int count=0;
+
+            while (num != 0)
+                 {
+                num /= 10;
+                ++count;
+                }
+
+            complement9 = ((int) Math.pow(10, count )-1)- n;
+
+            complement10 = complement9 + 1;
+
+            System.out.println("\n10's complement of " + n + " is: " + complement10);
+
+        }
+        //Function to calculate 1's Complement of an 4-bit binary number
+        public static void Complement_1() {
+          try (Scanner input = new Scanner(System.in)) {
+            System.out.print("\nEnter a 4-digit binary number: ");
+
+            String binaryStr = input.nextLine();
+
+            String Comp1 = "";
+
+            for (int i = 0; i < binaryStr.length(); i++) {
+
+              char c = binaryStr.charAt(i);
+
+              if (c == '0') {
+                Comp1 += '1';
+              } else {
+                Comp1 += '0';
+              }
+
+            }
+            System.out.println("\n1's complement: " + Comp1);
+          }
+        }
+        //Function to calculate 2's Complement of an 4-bit binary number
+        /**
+         * 
+         */
+        public static void Complement_2() {
+          try (Scanner input = new Scanner(System.in)) {
+            System.out.print("\nEnter a 4-digit binary number: ");
+
+            String binaryStr = input.nextLine();
+
+            String Comp1str = Complement_1(binaryStr);
+
+            int Comp1 = Integer.parseInt(Comp1str, 2);
+
+            int Comp2 = Comp1 + 1;
+
+            String Comp2str = Integer.toBinaryString(Comp2);
+
+            System.out.println("\n2's complement: " + Comp2str);
+          } catch (NumberFormatException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+        }
+
+        public static String Complement_1(String binaryStr) {
+          String Comp1 = "";
+
+          for (int i = 0; i < binaryStr.length(); i++) {
+            char c = binaryStr.charAt(i);
+            if (c == '0') {
+              Comp1 += '1';
+            } else {
+              Comp1 += '0';
+            }
+
+          }
+          return Comp1;
+        }
+            //Main Function
+            public static void main(String[] args)
+            {
+                int choice1;
+
+                boolean exitmenu=false;
+
+                System.out.println("\n*****************************************");
+
+                System.out.println("Hii, Welcome to the Complement Calculator");
+
+                System.out.println("************************************************");
+
+                System.out.println("Java Mini Project by IU2141230042 & IU2141230033");
+
+                System.out.println("************************************************");
+
+                while(exitmenu==false){
+                  System.out.println("\nPlease choose from the following operations : \n\n1. 1's complement \n2. 2's complement \n3. 9's complement \n4. 10's complement \n5. Exit");
+
+                  System.out.print("\nEnter your choice here:");
+
+                  choice1 = sc.nextInt();
+
+                  if (choice1== 1)
+                  {
+
+                    Complement_1();
+                  }  
+                  
+                  else if (choice1 == 2)
+                  {
+                    Complement_2();
+                  }
+                  
+                  else if (choice1 == 3)
+                  {
+                      complement_9();
+                  }
+                  else if(choice1 == 4)
+                  {
+                      complement_10();
+                  }
+                  else if(choice1 == 5)
+                  {
+                      System.out.println("\n*********************");
+                      System.out.print("Successfully Exited!!\n");
+                      System.out.println("*********************");
+                      exitmenu=true;
+                  }
+                  else 
+                  {
+                      System.out.print("\nInvalid Input\n");
+                  }
+                }
+                
+            }
+    }
